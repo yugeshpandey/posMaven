@@ -57,5 +57,5 @@ public class InventoryController {
 	public Inventory fetchInventoryByName(@PathVariable("name") String inventoryName) {
 		return inventoryService.fetchInventoryByName(inventoryName);
 	}
-
+	
 }

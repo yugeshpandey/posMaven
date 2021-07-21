@@ -67,6 +67,12 @@ public class InventoryServiceImpl implements InventoryService {
 		
 		return inventoryRepository.findByItemName(inventoryName);
 	}
+
+	@Override
+	public Inventory fetchInventoryByNameIgnoreCase(String inventoryName) {
+		
+		return inventoryRepository.findByItemNameIgnoreCase(inventoryName);
+	}
 	
 	
 	

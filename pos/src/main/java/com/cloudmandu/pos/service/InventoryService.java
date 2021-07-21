@@ -18,6 +18,9 @@ public interface InventoryService {
 
 	public Inventory fetchInventoryByName(String inventoryName);
 	
+	public Inventory fetchInventoryByNameIgnoreCase(String inventoryName);
+	
+	
 	
 
 }

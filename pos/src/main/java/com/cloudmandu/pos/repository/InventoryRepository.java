@@ -9,5 +9,8 @@ import com.cloudmandu.pos.entity.Inventory;
 public interface InventoryRepository extends JpaRepository<Inventory, Long> {
 	
 	public Inventory findByItemName(String inventoryName);
+	
+	public Inventory findByItemNameIgnoreCase(String inventoryName);
+	
 
 }

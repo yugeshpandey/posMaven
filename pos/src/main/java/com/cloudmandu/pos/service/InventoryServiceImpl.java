@@ -74,7 +74,4 @@ public class InventoryServiceImpl implements InventoryService {
 		return inventoryRepository.findByItemNameIgnoreCase(inventoryName);
 	}
 	
-	
-	
-
 }

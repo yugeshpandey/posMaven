@@ -2,6 +2,10 @@ package com.cloudmandu.pos.web;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,15 +24,18 @@ public class InventoryController {
 	@Autowired
 	private InventoryService inventoryService;
 	
+	private final Logger LOGGER = LoggerFactory.getLogger(InventoryController.class);
+	
 	@PostMapping("/inventories")
-	public Inventory saveInventory(@RequestBody Inventory inventory) {
-		
+	public Inventory saveInventory(@Valid @RequestBody Inventory inventory) {
+		LOGGER.info("Inside saveInventory of InventoryController");
 		return inventoryService.saveInventory(inventory);
 		
 	}
 	
 	@GetMapping("/inventories")
 	public List<Inventory> fetchInventoryList() {
+		LOGGER.info("Inside fetchInventory of Inventory Controller");
 		return inventoryService.fetchInventoryList();
 		
 	}

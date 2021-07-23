@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Inventory {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long itemId;
@@ -24,28 +24,35 @@ public class Inventory {
 	public Long getItemId() {
 		return itemId;
 	}
+
 	public void setItemId(Long itemId) {
 		this.itemId = itemId;
 	}
+
 	public String getItemName() {
 		return itemName;
 	}
+
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
+
 	public Double getItemPrice() {
 		return itemPrice;
 	}
+
 	public void setItemPrice(Double itemPrice) {
 		this.itemPrice = itemPrice;
 	}
+
 	public Boolean getIsInStock() {
 		return isInStock;
 	}
+
 	public void setIsInStock(Boolean isInStock) {
 		this.isInStock = isInStock;
 	}
-	
+
 	public Inventory(Long itemId, String itemName, Double itemPrice, Boolean isInStock) {
 		super();
 		this.itemId = itemId;
@@ -59,10 +66,5 @@ public class Inventory {
 		return "Department [itemId=" + itemId + ", itemName=" + itemName + ", itemPrice=" + itemPrice + ", isInStock="
 				+ isInStock + "]";
 	}
-	
-	
-	
-	
-	
 
 }

@@ -3,6 +3,7 @@ package com.cloudmandu.pos.service;
 import java.util.List;
 
 import com.cloudmandu.pos.entity.Inventory;
+import com.cloudmandu.pos.error.InventoryNotFoundException;
 
 public interface InventoryService {
 
@@ -10,7 +11,7 @@ public interface InventoryService {
 
 	public List<Inventory> fetchInventoryList();
 
-	public Inventory fetchInventoryByID(Long inventoryID);
+	public Inventory fetchInventoryByID(Long inventoryID) throws InventoryNotFoundException;
 
 	public void deleteInventoryByID(Long inventoryID);
 

@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NegativeOrZero;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -14,6 +15,7 @@ public class Inventory {
 	private Long itemId;
 	@NotBlank(message = "Please add item name")
 	private String itemName;
+	@NegativeOrZero(message = "Price cannot be negative or zero")
 	private Double itemPrice;
 	private Boolean isInStock;
 

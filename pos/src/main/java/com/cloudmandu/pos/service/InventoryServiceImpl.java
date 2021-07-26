@@ -2,12 +2,14 @@ package com.cloudmandu.pos.service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 import com.cloudmandu.pos.entity.Inventory;
+import com.cloudmandu.pos.error.InventoryNotFoundException;
 import com.cloudmandu.pos.repository.InventoryRepository;
 
 @Service
@@ -29,9 +31,15 @@ public class InventoryServiceImpl implements InventoryService {
 	}
 
 	@Override
-	public Inventory fetchInventoryByID(Long inventoryID) {
+	public Inventory fetchInventoryByID(Long inventoryID) throws InventoryNotFoundException {
 		
-		return inventoryRepository.findById(inventoryID).get();
+		Optional<Inventory> inventory =  inventoryRepository.findById(inventoryID);
+		
+		if(!inventory.isPresent()) {
+			throw new InventoryNotFoundException("Inventory not found");
+		}
+		
+		return inventory.get();
 	}
 
 	@Override

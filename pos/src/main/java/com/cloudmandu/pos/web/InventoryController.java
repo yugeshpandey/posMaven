@@ -48,6 +48,7 @@ public class InventoryController {
 	
 	@DeleteMapping("/inventories/{id}")
 	public String deleteInventoryByID(@PathVariable("id") Long inventoryID) {
+		LOGGER.info("Inside delete inventory by ID of Inventory Controller");
 		inventoryService.deleteInventoryByID(inventoryID);
 		return "Item deleted successfully";
 	}
@@ -55,7 +56,7 @@ public class InventoryController {
 	
 	@PutMapping("/inventories/{id}")
 	public Inventory updateInventory(@PathVariable("id") Long inventoryID, @RequestBody Inventory inventory ) {
-		
+		LOGGER.info("Inside update Inventory of Inventory Controller");
 		return inventoryService.updateInventory(inventoryID, inventory);
 		
 	}

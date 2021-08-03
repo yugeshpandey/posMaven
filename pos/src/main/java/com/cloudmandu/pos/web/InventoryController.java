@@ -13,12 +13,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cloudmandu.pos.entity.Inventory;
+import com.cloudmandu.pos.entity.InventoryDTO;
+import com.cloudmandu.pos.error.InventoryNotFoundException;
+import com.cloudmandu.pos.models.Inventory;
 import com.cloudmandu.pos.service.InventoryService;
 
 @RestController
+@RequestMapping("/inventories")
 public class InventoryController {
 	
 	@Autowired
@@ -26,27 +30,27 @@ public class InventoryController {
 	
 	private final Logger LOGGER = LoggerFactory.getLogger(InventoryController.class);
 	
-	@PostMapping("/inventories")
+	@PostMapping("/save")
 	public Inventory saveInventory(@Valid @RequestBody Inventory inventory) {
 		LOGGER.info("Inside saveInventory of InventoryController");
 		return inventoryService.saveInventory(inventory);
 		
 	}
 	
-	@GetMapping("/inventories")
+	@GetMapping("/get")
 	public List<Inventory> fetchInventoryList() {
 		LOGGER.info("Inside fetchInventory of Inventory Controller");
 		return inventoryService.fetchInventoryList();
 		
 	}
 	
-	@GetMapping("/inventories/{id}")
-	public Inventory fetchInventoryById(@PathVariable("id") Long inventoryID) {
+	@GetMapping("/{id}/get")
+	public Inventory fetchInventoryById(@PathVariable("id") Long inventoryID) throws InventoryNotFoundException {
 		return inventoryService.fetchInventoryByID(inventoryID);
 		
 	}
 	
-	@DeleteMapping("/inventories/{id}")
+	@DeleteMapping("/{id}/delete")
 	public String deleteInventoryByID(@PathVariable("id") Long inventoryID) {
 		LOGGER.info("Inside delete inventory by ID of Inventory Controller");
 		inventoryService.deleteInventoryByID(inventoryID);
@@ -54,16 +58,12 @@ public class InventoryController {
 	}
 	
 	
-	@PutMapping("/inventories/{id}")
+	@PutMapping("/{id}/update")
 	public Inventory updateInventory(@PathVariable("id") Long inventoryID, @RequestBody Inventory inventory ) {
 		LOGGER.info("Inside update Inventory of Inventory Controller");
 		return inventoryService.updateInventory(inventoryID, inventory);
 		
 	}
 	
-	@GetMapping("/inventories/name/{name}")
-	public Inventory fetchInventoryByName(@PathVariable("name") String inventoryName) {
-		return inventoryService.fetchInventoryByName(inventoryName);
-	}
 	
 }

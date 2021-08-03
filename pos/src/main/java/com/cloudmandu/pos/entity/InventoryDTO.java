@@ -1,5 +1,6 @@
 package com.cloudmandu.pos.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,18 +9,21 @@ import javax.validation.constraints.NegativeOrZero;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-public class Inventory {
+public class InventoryDTO {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long itemId;
-	@NotBlank(message = "Please add item name")
+
+	@Column(name = "NAME")
 	private String itemName;
-	@NegativeOrZero(message = "Price cannot be negative or zero")
+
+	@Column(name = "PRICE")
 	private Double itemPrice;
+	@Column(name = "AVAILABILITY")
 	private Boolean isInStock;
 
-	public Inventory() {
+	public InventoryDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -55,7 +59,7 @@ public class Inventory {
 		this.isInStock = isInStock;
 	}
 
-	public Inventory(Long itemId, String itemName, Double itemPrice, Boolean isInStock) {
+	public InventoryDTO(Long itemId, String itemName, Double itemPrice, Boolean isInStock) {
 		super();
 		this.itemId = itemId;
 		this.itemName = itemName;

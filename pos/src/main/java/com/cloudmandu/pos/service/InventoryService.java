@@ -2,8 +2,8 @@ package com.cloudmandu.pos.service;
 
 import java.util.List;
 
-import com.cloudmandu.pos.entity.Inventory;
 import com.cloudmandu.pos.error.InventoryNotFoundException;
+import com.cloudmandu.pos.models.Inventory;
 
 public interface InventoryService {
 

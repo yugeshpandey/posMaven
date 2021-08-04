@@ -13,15 +13,11 @@ public interface InventoryService {
 
 	public Inventory fetchInventoryByID(Long inventoryID) throws InventoryNotFoundException;
 
-	public void deleteInventoryByID(Long inventoryID);
+	public void deleteInventoryByID(Long inventoryID) throws InventoryNotFoundException;
 
-	public Inventory updateInventory(Long inventoryID, Inventory inventory);
+	public Inventory updateInventory(Long inventoryID, Inventory inventory) throws InventoryNotFoundException;
 
-	public Inventory fetchInventoryByName(String inventoryName);
-	
-	public Inventory fetchInventoryByNameIgnoreCase(String inventoryName);
-	
-	
+		
 	
 
 }

@@ -11,6 +11,18 @@ public class Inventory {
 	private Double itemPrice;
 	
 	private Boolean isInStock;
+	
+	private Dealer dealer;
+	
+	
+
+	public Dealer getDealer() {
+		return dealer;
+	}
+
+	public void setDealer(Dealer dealer) {
+		this.dealer = dealer;
+	}
 
 	public Inventory() {
 		// TODO Auto-generated constructor stub

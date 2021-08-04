@@ -1,10 +1,13 @@
 package com.cloudmandu.pos.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import com.cloudmandu.pos.models.Inventory;
 
@@ -22,6 +25,19 @@ public class InventoryDTO {
 	private Double itemPrice;
 	@Column(name = "AVAILABILITY")
 	private Boolean isInStock;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "DEALER_ID")
+	private DealerDTO dealer;
+	
+	
+	public DealerDTO getDealer() {
+		return dealer;
+	}
+
+	public void setDealer(DealerDTO dealer) {
+		this.dealer = dealer;
+	}
 
 	public InventoryDTO() {
 		// TODO Auto-generated constructor stub

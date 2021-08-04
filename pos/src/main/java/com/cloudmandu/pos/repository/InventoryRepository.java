@@ -8,6 +8,5 @@ import com.cloudmandu.pos.entity.InventoryDTO;
 @Repository
 public interface InventoryRepository extends JpaRepository<InventoryDTO, Long> {
 	
-		
 
 }

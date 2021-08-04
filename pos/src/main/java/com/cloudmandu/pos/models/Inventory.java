@@ -1,5 +1,7 @@
 package com.cloudmandu.pos.models;
 
+import com.cloudmandu.pos.entity.InventoryDTO;
+
 public class Inventory {
 	
 	private Long itemId;
@@ -44,6 +46,13 @@ public class Inventory {
 
 	public void setIsInStock(Boolean isInStock) {
 		this.isInStock = isInStock;
+	}
+	
+	public Inventory(InventoryDTO inventorydto) {
+		this.setItemName(inventorydto.getItemName());
+		this.setIsInStock(inventorydto.getIsInStock());
+		this.setItemId(inventorydto.getItemId());
+		this.setItemPrice(inventorydto.getItemPrice());
 	}
 
 	

@@ -2,6 +2,7 @@ package com.cloudmandu.pos.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ public class InventoryServiceImpl implements InventoryService {
 	private InventoryRepository inventoryRepository;
 
 
+
 	@Override
 	public Inventory saveInventory(Inventory inventory) {
 		InventoryDTO inventorydto = new InventoryDTO();
@@ -29,10 +31,13 @@ public class InventoryServiceImpl implements InventoryService {
 		return inventory;
 	}
 
+
 	@Override
 	public List<Inventory> fetchInventoryList() {
-		// TODO Auto-generated method stub
-		return null;
+		return inventoryRepository.findAll().stream().map(inventorydto -> {
+			Inventory inventory = new Inventory(inventorydto);
+			return inventory;
+		}).collect(Collectors.toList());
 	}
 
 	@Override
@@ -53,7 +58,7 @@ public class InventoryServiceImpl implements InventoryService {
 
 	@Override
 	public void deleteInventoryByID(Long inventoryID) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

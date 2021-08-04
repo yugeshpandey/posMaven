@@ -5,8 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NegativeOrZero;
-import javax.validation.constraints.NotBlank;
+
+import com.cloudmandu.pos.models.Inventory;
 
 @Entity
 public class InventoryDTO {
@@ -71,6 +71,13 @@ public class InventoryDTO {
 	public String toString() {
 		return "Department [itemId=" + itemId + ", itemName=" + itemName + ", itemPrice=" + itemPrice + ", isInStock="
 				+ isInStock + "]";
+	}
+	
+	public InventoryDTO(Inventory inventory) {
+		this.setItemId(inventory.getItemId());
+		this.setItemName(inventory.getItemName());
+		this.setItemPrice(inventory.getItemPrice());
+		this.setIsInStock(inventory.getIsInStock());
 	}
 
 }

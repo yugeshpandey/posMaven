@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cloudmandu.pos.entity.InventoryDTO;
 import com.cloudmandu.pos.error.InventoryNotFoundException;
 import com.cloudmandu.pos.models.Inventory;
 import com.cloudmandu.pos.service.InventoryService;

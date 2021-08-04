@@ -50,7 +50,7 @@ public class InventoryController {
 	}
 	
 	@DeleteMapping("/{id}/delete")
-	public String deleteInventoryByID(@PathVariable("id") Long inventoryID) {
+	public String deleteInventoryByID(@PathVariable("id") Long inventoryID) throws InventoryNotFoundException{
 		LOGGER.info("Inside delete inventory by ID of Inventory Controller");
 		inventoryService.deleteInventoryByID(inventoryID);
 		return "Item deleted successfully";
@@ -58,7 +58,7 @@ public class InventoryController {
 	
 	
 	@PutMapping("/{id}/update")
-	public Inventory updateInventory(@PathVariable("id") Long inventoryID, @RequestBody Inventory inventory ) {
+	public Inventory updateInventory(@PathVariable("id") Long inventoryID, @RequestBody Inventory inventory ) throws InventoryNotFoundException {
 		LOGGER.info("Inside update Inventory of Inventory Controller");
 		return inventoryService.updateInventory(inventoryID, inventory);
 		

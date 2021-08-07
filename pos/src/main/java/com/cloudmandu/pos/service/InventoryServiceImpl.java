@@ -21,6 +21,26 @@ public class InventoryServiceImpl implements InventoryService {
 	@Autowired
 	private InventoryRepository inventoryRepository;
 	
+	private Mapper<DealerDTO, Dealer> modelToDealerdto = (a) -> {
+		DealerDTO dealerdto = new DealerDTO();
+		dealerdto.setDealerName(a.getDealerName());
+		dealerdto.setId(a.getId());
+		dealerdto.setDealerAddress(a.getDealerAddress());
+		dealerdto.setDealerPhoneNumber(a.getDealerPhoneNumber());
+		
+		return dealerdto;
+	};
+	
+	private Mapper<Dealer, DealerDTO> dealerdtoToModel = (a) -> {
+		Dealer dealer = new Dealer();
+		dealer.setDealerName(a.getDealerName());
+		dealer.setId(a.getId());
+		dealer.setDealerAddress(a.getDealerAddress());
+		dealer.setDealerPhoneNumber(a.getDealerPhoneNumber());
+		
+		return dealer;
+	};
+	
 	private Mapper<Inventory, InventoryDTO> modelToDto = (a) -> { 
 		Inventory inventory = new Inventory();
 		inventory.setItemName(a.getItemName());
@@ -30,13 +50,9 @@ public class InventoryServiceImpl implements InventoryService {
 		DealerDTO dealerdto = a.getDealer();
 		
 		if(dealerdto != null) {
-			Dealer dealer = new Dealer();
-			dealer.setDealerName(dealerdto.getDealerName());
-			dealer.setId(dealerdto.getId());
+			Dealer dealer = dealerdtoToModel.map(dealerdto);
 			inventory.setDealer(dealer);
 		}
-		
-		
 		
 		return inventory;
 	}; 
@@ -51,13 +67,13 @@ public class InventoryServiceImpl implements InventoryService {
 		Dealer dealer = a.getDealer();
 		
 		if(dealer != null) {
-			DealerDTO dealerdto = new DealerDTO();
-			dealerdto.setDealerName(dealer.getDealerName());
-			dealerdto.setId(dealer.getId());
+			DealerDTO dealerdto = modelToDealerdto.map(dealer);
 			inventorydto.setDealer(dealerdto);
 		}
 		return inventorydto;
 	}; 
+	
+	
 
 
 

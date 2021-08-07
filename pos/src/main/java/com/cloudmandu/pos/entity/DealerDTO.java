@@ -17,6 +17,10 @@ public class DealerDTO {
 	
 	@Column(name = "DEALER")
 	private String dealerName;
+	
+	private String dealerAddress;
+	
+	private String dealerPhoneNumber;
 
 	public Long getId() {
 		return id;
@@ -32,6 +36,22 @@ public class DealerDTO {
 
 	public void setDealerName(String dealerName) {
 		this.dealerName = dealerName;
+	}
+
+	public String getDealerAddress() {
+		return dealerAddress;
+	}
+
+	public void setDealerAddress(String dealerAddress) {
+		this.dealerAddress = dealerAddress;
+	}
+
+	public String getDealerPhoneNumber() {
+		return dealerPhoneNumber;
+	}
+
+	public void setDealerPhoneNumber(String dealerPhoneNumber) {
+		this.dealerPhoneNumber = dealerPhoneNumber;
 	}
 	
 	
